@@ -19,6 +19,8 @@ public class User {
     private String password;
     private String email;
     private String role;    // ROLE_USER, ROLE_ADMIN, ROLE_MANAGER
+    private String provider;    // google, facebook, naver
+    private String providerId;  // google 회원 Id(sub)
     @CreationTimestamp
     private Timestamp createDate;
 
