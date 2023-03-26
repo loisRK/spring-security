@@ -55,8 +55,11 @@ public class IndexController {
         return "index";
     }
 
+    // OAuth, 일반 로그인 모두 principalDetails
+    // @AuthenticationPrincipal :
     @GetMapping("/user")
     public String user(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        System.out.println("principalDetails : " + principalDetails.getUser());
         return "user";
     }
 

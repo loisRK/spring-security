@@ -22,9 +22,17 @@ import java.util.Map;
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private User user;  // 콤포지션
+    private Map<String, Object> attributes;
 
+    // 일반 로그인 시 사용하는 생성자
     public PrincipalDetails(User user){
         this.user = user;
+    }
+
+    // OAuth 로그인 시 사용하는 생성자
+    public PrincipalDetails(User user, Map<String, Object> attributes){
+        this.user = user;
+        this.attributes = attributes;
     }
 
     // 해당 User의 권한을 리턴하는 곳
@@ -78,11 +86,13 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
 
     // OAuth2USer 상속을 위해 필요한 함수 override
+    // OAuth2User 로그인 시
     @Override
     public Map<String, Object> getAttributes() {
-        return null;
+        return attributes;
     }
 
+    // 중요하지 않고, 쓰지도 않음
     @Override
     public String getName() {
         return null;

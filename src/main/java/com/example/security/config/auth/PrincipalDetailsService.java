@@ -18,6 +18,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 
     // loginForm.html에 입력한 username이 파라미터로 받아와 짐
     // SecuritySession(Authentication(UserDetails))
+    // 함수 종료시 @AuthenticationPrincipal 어노테이션이 만들어진다.
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User userEntity = userRepository.findByUsername(username);
